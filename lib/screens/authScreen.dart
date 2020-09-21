@@ -35,32 +35,35 @@ class _AuthScreenState extends State<AuthScreen> {
       child: Stack(
         children: <Widget>[
           Container(
-              height: deviceSize.height,
-              width: deviceSize.width,
-              child: Column(
-                children: <Widget>[
-                  Container(height: deviceSize.height * 0.1),
-                  Container(
-                    width: deviceSize.width * 0.4,
-                    child: Image.asset('lib/assets/aelogo.png',
-                        fit: BoxFit.fitHeight),
+            height: deviceSize.height,
+            width: deviceSize.width,
+            child: Column(
+              children: <Widget>[
+                Container(height: deviceSize.height * 0.1),
+                Container(
+                  width: deviceSize.width * 0.4,
+                  child: Image.asset(
+                    'lib/assets/aelogo.png',
+                    fit: BoxFit.fitHeight,
                   ),
-                  Container(height: deviceSize.height * 0.1),
-                  Container(
-                    height: deviceSize.height * 0.51,
-                    decoration: new BoxDecoration(
-                      image: new DecorationImage(
-                        fit: BoxFit.cover,
-                        colorFilter: new ColorFilter.mode(
-                            Colors.white.withOpacity(0.2), BlendMode.dstATop),
-                        image: new AssetImage(
-                          'lib/assets/agriculture.png',
-                        ),
+                ),
+                Container(height: deviceSize.height * 0.1),
+                Container(
+                  height: deviceSize.height * 0.51,
+                  decoration: new BoxDecoration(
+                    image: new DecorationImage(
+                      fit: BoxFit.cover,
+                      colorFilter: new ColorFilter.mode(
+                          Colors.white.withOpacity(0.2), BlendMode.dstATop),
+                      image: new AssetImage(
+                        'lib/assets/agriculture.png',
                       ),
                     ),
                   ),
-                ],
-              )),
+                ),
+              ],
+            ),
+          ),
           Container(
             color: Color.fromRGBO(255, 255, 255, 0.19),
           ),
