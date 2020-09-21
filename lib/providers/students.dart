@@ -1,10 +1,10 @@
 import 'dart:convert';
 
-import 'package:ae_program_app/models/student.dart';
-import 'package:ae_program_app/models/studentMarks.dart';
-import 'package:ae_program_app/providers/attendance.dart';
-import 'package:ae_program_app/providers/auth.dart';
-import 'package:ae_program_app/providers/studentMarks.dart';
+import '../models/student.dart';
+import '../models/studentMarks.dart';
+import '../providers/attendance.dart';
+import '../providers/auth.dart';
+import '../providers/studentMarks.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';

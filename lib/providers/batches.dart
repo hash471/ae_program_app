@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:ae_program_app/models/batch.dart';
-import 'package:ae_program_app/providers/auth.dart';
+import '../models/batch.dart';
+import '../providers/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 

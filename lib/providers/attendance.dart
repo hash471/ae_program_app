@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:ae_program_app/models/attendance.dart';
-import 'package:ae_program_app/models/student.dart';
-import 'package:ae_program_app/providers/auth.dart';
-import 'package:ae_program_app/providers/students.dart';
+import '../models/attendance.dart';
+import '../models/student.dart';
+import '../providers/auth.dart';
+import '../providers/students.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';

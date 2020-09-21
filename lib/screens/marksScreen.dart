@@ -1,11 +1,11 @@
-import 'package:ae_program_app/models/batchExam.dart';
-import 'package:ae_program_app/models/studentMarks.dart';
-import 'package:ae_program_app/providers/auth.dart';
-import 'package:ae_program_app/providers/batchExams.dart';
-import 'package:ae_program_app/providers/batches.dart';
-import 'package:ae_program_app/providers/centres.dart';
-import 'package:ae_program_app/providers/studentMarks.dart';
-import 'package:ae_program_app/screens/splashScreen.dart';
+import '../models/batchExam.dart';
+import '../models/studentMarks.dart';
+import '../providers/auth.dart';
+import '../providers/batchExams.dart';
+import '../providers/batches.dart';
+import '../providers/centres.dart';
+import '../providers/studentMarks.dart';
+import '../screens/splashScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -17,6 +17,7 @@ class MarksScreen extends StatefulWidget {
 
 class _MarksScreenState extends State<MarksScreen> {
   bool _isInit = true;
+  List<TextEditingController> _controller = [];
   List<String> centres = [];
   List<String> batches = [];
   List<String> examTypes = [];
@@ -127,11 +128,15 @@ class _MarksScreenState extends State<MarksScreen> {
   }
 
   void goAhead(BuildContext ctx) async {
+    print(students[0].marks);
     final deviceSize = MediaQuery.of(context).size;
     setState(() {
       this.attendanceMarked = true;
     });
     this.error = false;
+    for (int i = 0; i < this.students.length; i++) {
+      this.students[i].marks = int.parse(_controller[i].text);
+    }
     this.students.forEach((id) {
       id.examName = selectedExamName;
       if (id.marks < 0 || id.marks > maxMarks) {
@@ -208,7 +213,14 @@ class _MarksScreenState extends State<MarksScreen> {
     final deviceSize = MediaQuery.of(context).size;
     this.centres = Provider.of<CentreList>(context).getCentreNames;
     this.batches = Provider.of<BatchList>(context).getBatchNames;
-    this.students = Provider.of<StudentMarks>(context).getStudentMarks;
+    if (studentsloaded) {
+      print('fetching students');
+      this.students = Provider.of<StudentMarks>(context).getStudentMarks;
+      for (int i = 0; i < students.length; i++) {
+        _controller.add(new TextEditingController());
+        _controller[i].text = this.students[i].marks.toString();
+      }
+    }
     this.studentsloaded = Provider.of<StudentMarks>(context).getLoader();
     this.marksPresent = Provider.of<StudentMarks>(context).getStatus;
     this.batchesloaded = Provider.of<BatchList>(context).getStatus();
@@ -524,13 +536,16 @@ class _MarksScreenState extends State<MarksScreen> {
                                                           keyboardType:
                                                               TextInputType
                                                                   .number,
+                                                          controller:
+                                                              _controller[
+                                                                  index],
                                                           decoration:
                                                               InputDecoration(
                                                                   enabledBorder:
                                                                       UnderlineInputBorder(
-                                                                    borderSide: (students[index].marks <
+                                                                    borderSide: (int.parse(_controller[index].text) <
                                                                                 0 ||
-                                                                            students[index].marks >
+                                                                            int.parse(_controller[index].text) >
                                                                                 30)
                                                                         ? BorderSide(
                                                                             color: Colors
@@ -545,14 +560,16 @@ class _MarksScreenState extends State<MarksScreen> {
                                                                           .red
                                                                       : Colors
                                                                           .blue),
-                                                          onChanged: (value) {
-                                                            int marks =
-                                                                int.parse(
-                                                                    value);
-
-                                                            students[index]
-                                                                .marks = marks;
-                                                          },
+                                                          //   onChanged: (value) {
+                                                          //     int marks =
+                                                          //         int.parse(
+                                                          //             value);
+                                                          //     students[index]
+                                                          //         .marks = marks;
+                                                          //     _controller[index]
+                                                          //         .text = students[index]
+                                                          //         .marks.toString();
+                                                          //   },
                                                         ),
                                                 )
                                               ],

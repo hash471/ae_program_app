@@ -1,10 +1,9 @@
 import 'dart:convert';
 import 'dart:async';
 
-import 'package:ae_program_app/models/trainer.dart';
+import '../models/trainer.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Auth with ChangeNotifier {

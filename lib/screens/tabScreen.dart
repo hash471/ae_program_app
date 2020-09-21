@@ -1,16 +1,16 @@
-import 'package:ae_program_app/models/batch.dart';
-import 'package:ae_program_app/models/centre.dart';
-import 'package:ae_program_app/models/dashBoard.dart';
-import 'package:ae_program_app/models/student.dart';
-import 'package:ae_program_app/models/trainer.dart';
-import 'package:ae_program_app/providers/auth.dart';
-import 'package:ae_program_app/providers/batches.dart';
-import 'package:ae_program_app/providers/centres.dart';
-import 'package:ae_program_app/providers/students.dart';
-import 'package:ae_program_app/screens/attendanceScreen.dart';
-import 'package:ae_program_app/screens/marksScreen.dart';
-import 'package:ae_program_app/screens/scheduleScreen.dart';
-import 'package:ae_program_app/screens/splashScreen.dart';
+import '../models/batch.dart';
+import '../models/centre.dart';
+import '../models/dashBoard.dart';
+import '../models/student.dart';
+import '../models/trainer.dart';
+import '../providers/auth.dart';
+import '../providers/batches.dart';
+import '../providers/centres.dart';
+import '../providers/students.dart';
+import '../screens/attendanceScreen.dart';
+import '../screens/marksScreen.dart';
+import '../screens/scheduleScreen.dart';
+import '../screens/splashScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -382,7 +382,7 @@ class _TabScreenState extends State<TabScreen> {
                           ),
                           Container(
                               width: deviceSize.width * 0.12,
-                              height: deviceSize.width * 0.12,
+                              height: deviceSize.width * 0.11,
                               decoration: BoxDecoration(
                                 color: Colors.yellow,
                                 borderRadius: BorderRadius.circular(50),

@@ -1,4 +1,4 @@
-import 'package:ae_program_app/providers/auth.dart';
+import '../providers/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -39,7 +39,7 @@ class _AuthScreenState extends State<AuthScreen> {
               width: deviceSize.width,
               child: Column(
                 children: <Widget>[
-                  Container(height: deviceSize.height * 0.15),
+                  Container(height: deviceSize.height * 0.1),
                   Container(
                     width: deviceSize.width * 0.4,
                     child: Image.asset('lib/assets/aelogo.png',

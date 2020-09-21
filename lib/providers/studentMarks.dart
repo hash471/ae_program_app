@@ -1,13 +1,12 @@
 import 'dart:convert';
 
-import 'package:ae_program_app/models/student.dart';
-import 'package:ae_program_app/models/studentMarks.dart';
-import 'package:ae_program_app/providers/auth.dart';
-import 'package:ae_program_app/providers/students.dart';
+import '../models/student.dart';
+import '../models/studentMarks.dart';
+import '../providers/auth.dart';
+import '../providers/students.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
-import 'package:intl/intl.dart';
 
 class StudentMarks with ChangeNotifier {
   List<StudentMark> _students = [];

@@ -1,8 +1,8 @@
-import 'package:ae_program_app/models/student.dart';
-import 'package:ae_program_app/providers/auth.dart';
-import 'package:ae_program_app/providers/batches.dart';
-import 'package:ae_program_app/providers/centres.dart';
-import 'package:ae_program_app/providers/students.dart';
+import '../models/student.dart';
+import '../providers/auth.dart';
+import '../providers/batches.dart';
+import '../providers/centres.dart';
+import '../providers/students.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
