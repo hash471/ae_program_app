@@ -114,16 +114,20 @@ class _AcademicsScreenState extends State<AcademicsScreen> {
                   _academicsProvider.updateBatchNameTo(selectedBatch);
                   final areTopicsAvailable = await _academicsProvider
                       .fetchNumberOfDaysGiven(selectedBatch);
-                  _helperGuideNotifier.value =
-                      areTopicsAvailable ? 'Select day' : 'No Topics available';
+                  if (!areTopicsAvailable) {
+                    _helperGuideNotifier.value = 'No Topics available';
+                    return;
+                  }
+
+                  _helperGuideNotifier.value = null;
+                  _academicsProvider.setSelectedDay(1);
                 },
               ),
             ],
           ),
         ),
-        DaysList(
-          onDaySelected: (int day) => _helperGuideNotifier.value = null,
-        ),
+        const DaysList(),
+        _divider(),
         _helperGuideOrTopicsList(),
       ],
     );
@@ -136,7 +140,7 @@ class _AcademicsScreenState extends State<AcademicsScreen> {
           valueListenable: _helperGuideNotifier,
           builder: (context, value, child) {
             if (value != null) return Text(value);
-            
+
             return Column(
               children: [
                 Expanded(child: TopicsList()),
@@ -146,6 +150,13 @@ class _AcademicsScreenState extends State<AcademicsScreen> {
           },
         ),
       ),
+    );
+  }
+
+  Widget _divider() {
+    return Divider(
+      color: Colors.black87,
+      height: 12.0,
     );
   }
 

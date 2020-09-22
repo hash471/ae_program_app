@@ -5,17 +5,14 @@ import 'package:provider/provider.dart';
 class SubmitButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final buttonSize = Size(
-      MediaQuery.of(context).size.width,
-      kToolbarHeight,
-    );
     return Consumer<AcademicsProvider>(
       builder: (context, provider, child) {
-        return SizedBox.fromSize(
-          size: buttonSize,
-          child: FlatButton(
+        return ButtonTheme(
+          minWidth: MediaQuery.of(context).size.width,
+          height: 50.0,
+          child: RaisedButton(
             child: Text(
-              'Submit',
+              'SUBMIT',
               style: TextStyle(color: Colors.white),
             ),
             color: Color(0xff83BB40),
