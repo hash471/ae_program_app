@@ -9,7 +9,7 @@ class TopicsList extends StatelessWidget {
     return Consumer<AcademicsProvider>(
       builder: (context, provider, child) {
         return ListView.builder(
-          padding: const EdgeInsets.symmetric(vertical: 12.0),
+          padding: const EdgeInsets.symmetric(vertical: 8.0),
           itemCount: provider.topics.length,
           itemBuilder: (context, index) {
             final topic = provider.topics[index];

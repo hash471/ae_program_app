@@ -86,6 +86,7 @@ class _MyHomePageState extends State<MyApp> {
       ],
       child: Consumer<Auth>(
         builder: (ctx, auth, _) => MaterialApp(
+          debugShowCheckedModeBanner: false,
           home: auth.isAuth
               ? TabScreen()
               // ? ViewOrder()
