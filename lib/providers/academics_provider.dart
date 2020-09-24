@@ -3,10 +3,12 @@ import 'dart:convert';
 import 'package:app/screens/academics/models/topic.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart' show DateFormat;
 
 class AcademicsProvider extends ChangeNotifier {
   String _trainingType = '';
   String get trainingType => _trainingType;
+  String _trainerName = '';
 
   int _days = 0;
   int get days => _days;
@@ -23,7 +25,8 @@ class AcademicsProvider extends ChangeNotifier {
   Map<String, Topic> _changedTopics = {};
   bool get hasChanges => _changedTopics.isNotEmpty;
 
-  void init() {
+  void init(String trainerName) {
+    _trainerName = trainerName;
     _trainingType = '';
     _days = 0;
   }
@@ -78,9 +81,11 @@ class AcademicsProvider extends ChangeNotifier {
       final response = await http.post(
         'http://lmsapp-env.iy5h5ssp8k.ap-south-1.elasticbeanstalk.com/api/batchSchedule/addBatchTopic',
         body: {
+          'bDate': DateFormat('dd-MM-yyyy').format(DateTime.now()),
           'batchName': _batchName,
           'topic': topic.name,
           'topicStatus': 'Completed',
+          'submittedBy': _trainerName,
           'bDay': '$_selectedDay',
         },
       );
