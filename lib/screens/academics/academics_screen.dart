@@ -1,4 +1,5 @@
 import 'package:app/providers/academics_provider.dart';
+import 'package:app/providers/auth.dart';
 import 'package:app/screens/academics/widgets/days_list.dart';
 import 'package:app/screens/academics/models/dropdown_data_with_selection.dart';
 import 'package:app/screens/academics/widgets/select_from_dropdown.dart';
@@ -26,13 +27,21 @@ class _AcademicsScreenState extends State<AcademicsScreen> {
   @override
   void initState() {
     super.initState();
-    _academicsProvider = Provider.of<AcademicsProvider>(context, listen: false)
-      ..init();
+    final trainerName = Provider.of<Auth>(
+      context,
+      listen: false,
+    ).getTrainer().name;
+    _academicsProvider = Provider.of<AcademicsProvider>(
+      context,
+      listen: false,
+    )..init(trainerName);
+
     _centresDataNotifier =
         ValueNotifier(DropdownDataWithSelection<String>.empty());
     _batchesDataNotifier =
         ValueNotifier(DropdownDataWithSelection<String>.empty());
     _helperGuideNotifier = ValueNotifier('Select Centre');
+    
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       final centreListProvider = Provider.of<CentreList>(
         context,
